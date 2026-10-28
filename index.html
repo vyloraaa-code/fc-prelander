@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080b09">
+  <title>Open in Browser</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080b09;
+      --green: #35df7c;
+      --muted: #898f8b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      width: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: #f7f8f7;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      overflow-x: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      width: 75vw;
+      height: 55vh;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    body::before {
+      background: #0c8b48;
+      top: -32vh;
+      left: 12vw;
+    }
+
+    body::after {
+      background: #07572e;
+      right: -48vw;
+      bottom: -25vh;
+      opacity: 0.08;
+    }
+
+    .page {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 28px 22px
+        calc(28px + env(safe-area-inset-bottom));
+    }
+
+    .content {
+      width: min(100%, 540px);
+      text-align: center;
+      transform: translateY(-1px);
+    }
+
+    .icon-tile {
+      width: 116px;
+      height: 116px;
+      margin: 0 auto 34px;
+      border-radius: 30px;
+      display: grid;
+      place-items: center;
+      color: var(--green);
+      background: rgba(14, 47, 30, 0.78);
+      border: 1px solid rgba(53, 223, 124, 0.30);
+      box-shadow:
+        0 0 38px rgba(35, 220, 112, 0.10),
+        inset 0 0 0 1px rgba(53, 223, 124, 0.025);
+    }
+
+    .icon-tile svg {
+      width: 43px;
+      height: 43px;
+      stroke: currentColor;
+      stroke-width: 4.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 7.1vw, 62px);
+      line-height: 1.08;
+      letter-spacing: -2.5px;
+      font-weight: 850;
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .description {
+      max-width: 520px;
+      margin: 17px auto 0;
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.48;
+      font-weight: 650;
+      letter-spacing: -0.25px;
+    }
+
+    .continue-button {
+      appearance: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 78px;
+      margin: 47px auto 0;
+      padding: 18px 24px;
+      border: 0;
+      border-radius: 19px;
+      background: var(--green);
+      color: #06150c;
+      font: inherit;
+      font-size: 24px;
+      font-weight: 850;
+      letter-spacing: -0.4px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 0 45px rgba(40, 225, 116, 0.12);
+      transition: transform 0.15s ease, filter 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .continue-button:active {
+      transform: scale(0.985);
+      filter: brightness(0.94);
+    }
+
+    .continue-button:focus-visible {
+      outline: 3px solid #f7fff9;
+      outline-offset: 4px;
+    }
+
+    .trust-line {
+      margin: 27px 0 0;
+      color: #666d68;
+      font-size: 16px;
+      line-height: 1.4;
+      font-weight: 750;
+      letter-spacing: 0.1px;
+    }
+
+    .trust-line .dot {
+      display: inline-block;
+      margin: 0 13px;
+      color: #3e4540;
+    }
+
+    @media (max-width: 420px) {
+      .page {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .icon-tile {
+        width: 104px;
+        height: 104px;
+        border-radius: 27px;
+        margin-bottom: 32px;
+      }
+
+      h1 {
+        letter-spacing: -1.9px;
+      }
+
+      .description {
+        font-size: 17px;
+        margin-top: 16px;
+      }
+
+      .continue-button {
+        min-height: 72px;
+        margin-top: 42px;
+        font-size: 22px;
+        border-radius: 18px;
+      }
+
+      .trust-line {
+        font-size: 15px;
+        margin-top: 25px;
+      }
+
+      .trust-line .dot {
+        margin: 0 9px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="content" aria-labelledby="headline">
+
+      <div class="icon-tile" aria-hidden="true">
+        <svg viewBox="0 0 48 48">
+          <path d="M13 35 35 13"></path>
+          <path d="M15 13h20v20"></path>
+        </svg>
+      </div>
+
+      <h1 id="headline">
+        Open in <span>Browser</span>
+      </h1>
+
+      <p class="description">
+        Tap Continue to open this page in your browser for the full
+        experience.
+      </p>
+
+      <a
+        class="continue-button"
+        id="continueButton"
+        href="https://fc-us.vercel.app/"
+      >
+        CONTINUE
+      </a>
+
+      <p class="trust-line" aria-label="Safari, Chrome, Secure">
+        Safari
+        <span class="dot">·</span>
+        Chrome
+        <span class="dot">·</span>
+        Secure
+      </p>
+
+    </section>
+  </main>
+</body>
+</html>
